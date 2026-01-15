@@ -54,22 +54,19 @@
                 throw new Error('Erreur réseau: ' + response.status);
             }
 
-            // Remove typing indicator
-            typingIndicator.remove();
-
-            // Create bot message element for streaming
+            // Create bot message element for streaming (but keep typing indicator)
             const botMessageDiv = document.createElement('div');
             botMessageDiv.className = 'chat-message bot-message';
             const botMessageP = document.createElement('p');
             botMessageDiv.appendChild(botMessageP);
             chatMessages.appendChild(botMessageDiv);
-            scrollToBottom();
 
             // Read streaming response (SSE format)
             const reader = response.body.getReader();
             const decoder = new TextDecoder();
             let fullText = '';
             let buffer = '';
+            let firstChunkReceived = false;
 
             while (true) {
                 const { done, value } = await reader.read();
@@ -91,6 +88,12 @@
                     }
 
                     if (line.startsWith('data:')) {
+                        // Remove typing indicator on first chunk
+                        if (!firstChunkReceived) {
+                            typingIndicator.remove();
+                            firstChunkReceived = true;
+                        }
+
                         // Extract content after "data:" (5 chars)
                         // Quarkus SSE puts the leading space of content after the colon
                         // e.g., content " suis" becomes line "data: suis"
@@ -100,11 +103,19 @@
                         if (content !== '[DONE]' && content !== '') {
                             fullText += content;
                             botMessageP.textContent = fullText;
-                            scrollToBottom();
+
+                            // Smooth scroll to bottom with each chunk
+                            chatMessages.scrollTo({
+                                top: chatMessages.scrollHeight,
+                                behavior: 'smooth'
+                            });
                         }
                     }
                 }
             }
+
+            // Final scroll to ensure everything is visible
+            scrollToBottom();
 
         } catch (error) {
             console.error('Erreur complète:', error);
