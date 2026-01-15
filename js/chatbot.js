@@ -1,7 +1,7 @@
 // Central Chatbot functionality
 (function() {
     // API Configuration - Update this URL after deploying to Railway
-    const API_URL = 'https://portfolio-api-production.up.railway.app';
+    const API_URL = 'https://web-production-f8bff.up.railway.app';
     // For local development: const API_URL = 'http://localhost:8080';
 
     const chatInput = document.getElementById('chat-input-main');
