@@ -196,3 +196,15 @@
     });
 
 })();
+
+// Global function for suggestion pills
+function askQuestion(question) {
+    const chatInput = document.getElementById('chat-input-main');
+    const chatSend = document.getElementById('chat-send-main');
+
+    // Set the question in the input
+    chatInput.value = question;
+
+    // Trigger the send button click
+    chatSend.click();
+}
