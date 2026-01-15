@@ -802,9 +802,11 @@ body {
     font-size: 0.8rem;
 }
 
-/* Other Certifications */
+/* Other Certifications - Two rows layout */
 .other-certs {
     padding: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .cert-badge-item {
