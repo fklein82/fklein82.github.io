@@ -748,6 +748,43 @@ body {
     font-size: 1.05rem;
 }
 
+/* Kubestronaut Logo */
+.kubestronaut-link {
+    display: block;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s;
+}
+
+.kubestronaut-link:hover {
+    transform: scale(1.05);
+}
+
+.kubestronaut-logo {
+    width: 150px;
+    height: auto;
+    filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.4));
+}
+
+/* Credly Link */
+.credly-link {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, var(--blue-accent), var(--purple-accent));
+    color: var(--text-primary);
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s;
+    text-align: center;
+}
+
+.credly-link:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+}
+
 /* Certification Section Titles */
 .cert-section-title {
     font-size: 1.8rem;
