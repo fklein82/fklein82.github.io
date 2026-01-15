@@ -764,6 +764,41 @@ body {
     box-shadow: 0 0 25px rgba(59, 130, 246, 0.4);
 }
 
+/* Cloud Native Certifications - Smaller badges */
+.cloud-native-certs {
+    padding: 2rem;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(139, 92, 246, 0.05));
+    border-radius: 20px;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.cloud-native-certs .cert-badge-item {
+    background: var(--glass-bg);
+    border: 2px solid var(--glass-border);
+    min-width: 110px;
+    max-width: 120px;
+    padding: 0.6rem;
+}
+
+.cloud-native-certs .cert-badge-item:hover {
+    border-color: var(--blue-accent);
+    box-shadow: 0 0 25px rgba(59, 130, 246, 0.4);
+}
+
+.cloud-native-certs .cert-badge-img {
+    width: 60px;
+    height: 60px;
+}
+
+.cloud-native-certs .cert-badge-name {
+    font-size: 0.7rem;
+    min-height: 2rem;
+}
+
+.cloud-native-certs .cert-badge-acronym {
+    font-size: 0.7rem;
+}
+
 /* Other Certifications */
 .other-certs {
     padding: 1.5rem;
@@ -1105,8 +1140,28 @@ body {
         margin: 2rem 0 1.5rem;
     }
 
-    .cncf-certs, .other-certs {
+    .cncf-certs, .cloud-native-certs, .other-certs {
         padding: 1rem;
+    }
+
+    .cloud-native-certs .cert-badge-item {
+        min-width: 90px;
+        max-width: 100px;
+        padding: 0.5rem;
+    }
+
+    .cloud-native-certs .cert-badge-img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .cloud-native-certs .cert-badge-name {
+        font-size: 0.65rem;
+        min-height: 1.8rem;
+    }
+
+    .cloud-native-certs .cert-badge-acronym {
+        font-size: 0.65rem;
     }
 
     .section-title {
