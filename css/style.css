@@ -26,8 +26,8 @@ body {
     color: var(--text-primary);
     background-color: var(--dark-bg);
     background-image:
-        radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+        radial-gradient(circle at 10% 20%, rgba(70, 149, 235, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 90% 80%, rgba(238, 0, 0, 0.08) 0%, transparent 50%);
     background-attachment: fixed;
 }
 
@@ -66,7 +66,7 @@ body {
 .nav-brand {
     font-size: 1.5rem;
     font-weight: bold;
-    background: linear-gradient(135deg, var(--blue-accent), var(--purple-accent));
+    background: linear-gradient(135deg, var(--blue-accent), var(--red-accent));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -206,7 +206,7 @@ body {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, var(--blue-accent), var(--purple-accent));
+    background: linear-gradient(135deg, var(--blue-accent), var(--red-accent));
     opacity: 0;
     transition: opacity 0.3s;
     border-radius: 50%;
@@ -245,18 +245,16 @@ body {
 
 /* Chatbot Section */
 .chatbot-section {
-    padding: 2rem 1rem;
-    background: transparent;
+    padding: 3rem 1rem;
+    background: var(--darker-surface);
 }
 
 .chatbot-card {
-    max-width: 650px;
+    max-width: 700px;
     margin: 0 auto;
-    background: var(--glass-bg);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background: var(--dark-surface);
     border: 1px solid var(--glass-border);
-    border-radius: 20px;
+    border-radius: 16px;
     overflow: hidden;
     box-shadow: var(--shadow-soft);
     transition: all 0.3s;
@@ -265,7 +263,7 @@ body {
 
 .chatbot-card:focus-within {
     border-color: var(--blue-accent);
-    box-shadow: var(--shadow-glow);
+    box-shadow: 0 0 0 3px rgba(70, 149, 235, 0.2), var(--shadow-soft);
 }
 
 .chatbot-header {
@@ -278,10 +276,11 @@ body {
 .chatbot-header h2 {
     font-size: 2rem;
     margin-bottom: 0.5rem;
-    background: linear-gradient(135deg, var(--blue-accent), var(--purple-accent));
+    background: var(--gradient-primary);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    font-weight: 700;
 }
 
 .chatbot-header p {
@@ -342,7 +341,7 @@ body {
 }
 
 .chatbot-messages-main .user-message {
-    background: linear-gradient(135deg, var(--blue-accent), var(--purple-accent));
+    background: linear-gradient(135deg, var(--blue-accent), var(--red-accent));
     color: var(--text-primary);
     margin-left: auto;
     text-align: right;
@@ -388,7 +387,7 @@ body {
 
 .btn-send-main {
     padding: 1rem;
-    background: linear-gradient(135deg, var(--blue-accent), var(--purple-accent));
+    background: linear-gradient(135deg, var(--blue-accent), var(--red-accent));
     color: var(--text-primary);
     border: none;
     border-radius: 12px;
@@ -508,16 +507,32 @@ body {
 .timeline-content {
     background: var(--glass-bg);
     backdrop-filter: blur(12px);
-    padding: 1.5rem;
-    border-radius: 12px;
+    padding: 2rem;
+    border-radius: 16px;
     border: 1px solid var(--glass-border);
     transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.timeline-content::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-primary);
+    opacity: 0;
+    transition: opacity 0.3s;
+    border-radius: 16px;
 }
 
 .timeline-content:hover {
     border-color: var(--blue-accent);
     box-shadow: var(--shadow-glow);
     transform: translateX(5px);
+}
+
+.timeline-content:hover::before {
+    opacity: 0.03;
 }
 
 
@@ -582,6 +597,8 @@ body {
     align-items: flex-start;
     gap: 1.5rem;
     margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
 }
 
 .company-logo {
@@ -632,6 +649,8 @@ body {
     font-size: 1.5rem;
     color: var(--blue-accent);
     margin-bottom: 0.5rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
 }
 
 .timeline-company {
@@ -650,6 +669,8 @@ body {
 .timeline-description {
     color: var(--text-secondary);
     line-height: 1.6;
+    position: relative;
+    z-index: 1;
 }
 
 /* Certifications Grid */
@@ -676,7 +697,7 @@ body {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, var(--blue-accent), var(--purple-accent));
+    background: linear-gradient(135deg, var(--blue-accent), var(--red-accent));
     opacity: 0;
     transition: opacity 0.3s;
 }
@@ -724,20 +745,20 @@ body {
     grid-column: 1 / -1;
     max-width: 600px;
     margin: 0 auto;
-    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+    background: linear-gradient(135deg, rgba(70, 149, 235, 0.08), rgba(238, 0, 0, 0.08));
     border: 2px solid var(--blue-accent);
-    box-shadow: 0 0 30px rgba(59, 130, 246, 0.4), 0 10px 40px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 30px rgba(70, 149, 235, 0.3), 0 10px 40px rgba(0, 0, 0, 0.3);
 }
 
 .cert-card.featured::before,
 .cert-card-featured::before {
-    opacity: 0.1;
+    opacity: 0.08;
 }
 
 .cert-card.featured:hover,
 .cert-card-featured:hover {
     transform: translateY(-8px);
-    box-shadow: 0 0 40px rgba(59, 130, 246, 0.6), 0 15px 50px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 40px rgba(70, 149, 235, 0.5), 0 0 20px rgba(238, 0, 0, 0.3), 0 15px 50px rgba(0, 0, 0, 0.4);
 }
 
 .cert-badge {
@@ -747,7 +768,7 @@ body {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    background: linear-gradient(135deg, var(--blue-accent), var(--purple-accent));
+    background: linear-gradient(135deg, var(--blue-accent), var(--red-accent));
     padding: 0.5rem 1rem;
     border-radius: 20px;
     font-size: 0.85rem;
@@ -803,7 +824,7 @@ body {
     display: inline-block;
     margin-top: 1.5rem;
     padding: 0.75rem 1.5rem;
-    background: linear-gradient(135deg, var(--blue-accent), var(--purple-accent));
+    background: linear-gradient(135deg, var(--blue-accent), var(--red-accent));
     color: var(--text-primary);
     text-decoration: none;
     border-radius: 8px;
@@ -853,9 +874,9 @@ body {
 /* CNCF Certifications - Highlighted */
 .cncf-certs {
     padding: 2rem;
-    background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(139, 92, 246, 0.05));
+    background: linear-gradient(135deg, rgba(70, 149, 235, 0.05), rgba(238, 0, 0, 0.05));
     border-radius: 20px;
-    border: 1px solid rgba(59, 130, 246, 0.2);
+    border: 1px solid rgba(70, 149, 235, 0.2);
 }
 
 .cncf-certs .cert-badge-item {
@@ -865,15 +886,15 @@ body {
 
 .cncf-certs .cert-badge-item:hover {
     border-color: var(--blue-accent);
-    box-shadow: 0 0 25px rgba(59, 130, 246, 0.4);
+    box-shadow: 0 0 25px rgba(70, 149, 235, 0.4);
 }
 
 /* Cloud Native Certifications - Two rows layout */
 .cloud-native-certs {
     padding: 2rem;
-    background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(139, 92, 246, 0.05));
+    background: linear-gradient(135deg, rgba(70, 149, 235, 0.05), rgba(238, 0, 0, 0.05));
     border-radius: 20px;
-    border: 1px solid rgba(59, 130, 246, 0.2);
+    border: 1px solid rgba(70, 149, 235, 0.2);
     flex-wrap: wrap;
     justify-content: center;
 }
@@ -889,7 +910,7 @@ body {
 
 .cloud-native-certs .cert-badge-item:hover {
     border-color: var(--blue-accent);
-    box-shadow: 0 0 25px rgba(59, 130, 246, 0.4);
+    box-shadow: 0 0 25px rgba(70, 149, 235, 0.4);
 }
 
 .cloud-native-certs .cert-badge-img {
@@ -984,15 +1005,23 @@ body {
     margin-bottom: 3rem;
     background: var(--glass-bg);
     backdrop-filter: blur(12px);
-    padding: 2rem;
-    border-radius: 12px;
+    padding: 2.5rem;
+    border-radius: 16px;
     border: 1px solid var(--glass-border);
+    transition: all 0.3s;
+}
+
+.skills-category:hover {
+    border-color: var(--blue-accent);
+    box-shadow: var(--shadow-glow);
 }
 
 .skills-category-title {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     color: var(--blue-accent);
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
 }
 
 .skills-tags {
@@ -1002,23 +1031,29 @@ body {
 }
 
 .skill-tag {
-    background: linear-gradient(135deg, var(--blue-accent), var(--purple-accent));
+    background: linear-gradient(135deg, var(--blue-accent), var(--red-accent));
     color: var(--text-primary);
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-size: 0.9rem;
+    padding: 0.65rem 1.25rem;
+    border-radius: 24px;
+    font-size: 0.95rem;
+    font-weight: 500;
     transition: all 0.3s;
     border: 1px solid transparent;
 }
 
 .skill-tag:hover {
-    transform: translateY(-2px);
+    transform: translateY(-2px) scale(1.05);
     box-shadow: var(--shadow-glow);
 }
 
 .skill-tag-soft {
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
+    color: var(--text-primary);
+}
+
+.skill-tag-soft:hover {
+    border-color: var(--blue-accent);
 }
 
 /* Languages Grid */
@@ -1033,13 +1068,24 @@ body {
 .language-item {
     background: var(--glass-bg);
     backdrop-filter: blur(12px);
-    padding: 1.5rem;
-    border-radius: 12px;
+    padding: 2rem;
+    border-radius: 16px;
     border: 1px solid var(--glass-border);
     display: flex;
     flex-direction: column;
     text-align: center;
     transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.language-item::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-primary);
+    opacity: 0;
+    transition: opacity 0.3s;
 }
 
 .language-item:hover {
@@ -1048,15 +1094,25 @@ body {
     transform: translateY(-5px);
 }
 
+.language-item:hover::before {
+    opacity: 0.05;
+}
+
 .language-name {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: 600;
     color: var(--blue-accent);
     margin-bottom: 0.5rem;
+    position: relative;
+    z-index: 1;
+    letter-spacing: -0.01em;
 }
 
 .language-level {
     color: var(--text-secondary);
+    position: relative;
+    z-index: 1;
+    font-size: 1rem;
 }
 
 /* Contact Section */
@@ -1074,34 +1130,36 @@ body {
 }
 
 .btn {
-    padding: 0.75rem 2rem;
+    padding: 0.875rem 2rem;
     border-radius: 8px;
     text-decoration: none;
-    transition: all 0.3s;
+    transition: all 0.2s;
     font-weight: 600;
-    background: linear-gradient(135deg, var(--blue-accent), var(--purple-accent));
+    background: var(--gradient-primary);
     color: var(--text-primary);
     border: none;
     cursor: pointer;
+    font-size: 1rem;
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, var(--blue-accent), var(--purple-accent));
+    background: var(--gradient-primary);
 }
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: var(--shadow-glow);
+    box-shadow: 0 8px 24px rgba(70, 149, 235, 0.4);
 }
 
 /* Footer */
 .footer {
-    background: var(--glass-bg);
+    background: var(--darker-surface);
     backdrop-filter: blur(12px);
     border-top: 1px solid var(--glass-border);
     color: var(--text-secondary);
     text-align: center;
-    padding: 2rem;
+    padding: 3rem 2rem;
+    font-size: 0.95rem;
 }
 
 .footer p {
