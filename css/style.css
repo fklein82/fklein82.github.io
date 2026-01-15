@@ -761,7 +761,7 @@ body {
 }
 
 .kubestronaut-logo {
-    width: 150px;
+    width: 100px;
     height: auto;
     filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.4));
 }
