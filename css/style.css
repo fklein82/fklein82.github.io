@@ -93,24 +93,18 @@ body {
     padding: 60px 0 80px;
     position: relative;
     overflow: hidden;
+    text-align: center;
 }
 
 .hero .container {
     width: 100%;
-    max-width: 1200px;
+    max-width: 692px;
 }
 
-.hero-wrapper {
+.hero-content {
     display: flex;
-    gap: 60px;
-    align-items: flex-start;
-}
-
-.hero-profile {
-    flex: 1;
-    display: flex;
-    gap: 32px;
-    align-items: flex-start;
+    flex-direction: column;
+    align-items: center;
 }
 
 .hero-photo {
@@ -118,11 +112,7 @@ body {
     height: 160px;
     border-radius: 50%;
     object-fit: cover;
-    flex-shrink: 0;
-}
-
-.hero-info {
-    flex: 1;
+    margin-bottom: 24px;
 }
 
 .hero-title {
@@ -132,7 +122,6 @@ body {
     letter-spacing: -0.01em;
     margin-bottom: 8px;
     color: var(--text-primary);
-    text-align: left;
 }
 
 .hero-subtitle {
@@ -142,7 +131,6 @@ body {
     letter-spacing: 0.009em;
     margin-bottom: 6px;
     color: var(--text-primary);
-    text-align: left;
 }
 
 .hero-company {
@@ -152,29 +140,29 @@ body {
     letter-spacing: -0.022em;
     color: var(--text-secondary);
     margin-bottom: 24px;
-    text-align: left;
 }
 
 .hero-social {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     gap: 12px;
     flex-wrap: wrap;
+    margin-bottom: 40px;
 }
 
-.hero-chatbot {
-    flex: 1;
-    max-width: 500px;
+.hero-chatbot-centered {
+    width: 100%;
+    max-width: 600px;
 }
 
-.hero-chatbot .chatbot-card {
+.hero-chatbot-centered .chatbot-card {
     background: rgba(255, 255, 255, 0.02);
     border-radius: 24px;
     overflow: hidden;
     transition: all 0.3s ease;
 }
 
-.hero-chatbot .chatbot-card:focus-within {
+.hero-chatbot-centered .chatbot-card:focus-within {
     background: rgba(255, 255, 255, 0.04);
 }
 
