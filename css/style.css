@@ -510,24 +510,38 @@ body {
     transform: translateX(5px);
 }
 
-.timeline-item.expandable .timeline-header {
-    position: relative;
-    padding-right: 2.5rem;
+
+/* Show More Button */
+.show-more-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 2rem auto;
+    padding: 1rem 2rem;
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
 }
 
-.timeline-item.expandable .timeline-header::after {
-    content: '▼';
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 1.2rem;
-    color: var(--blue-accent);
+.show-more-btn:hover {
+    border-color: var(--blue-accent);
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-2px);
+}
+
+.show-more-icon {
     transition: transform 0.3s;
 }
 
-.timeline-item.expandable.expanded .timeline-header::after {
-    transform: translateY(-50%) rotate(180deg);
+.show-more-text {
+    font-family: inherit;
 }
 
 .timeline-header {
@@ -535,11 +549,6 @@ body {
     align-items: flex-start;
     gap: 1.5rem;
     margin-bottom: 1rem;
-    transition: all 0.2s;
-}
-
-.timeline-item.expandable .timeline-header:hover {
-    opacity: 0.8;
 }
 
 .company-logo {
@@ -608,16 +617,6 @@ body {
 .timeline-description {
     color: var(--text-secondary);
     line-height: 1.6;
-    max-height: 500px;
-    overflow: hidden;
-    transition: max-height 0.3s ease, opacity 0.3s ease;
-    opacity: 1;
-}
-
-.timeline-description.collapsed {
-    max-height: 0;
-    opacity: 0;
-    margin-top: 0;
 }
 
 /* Certifications Grid */

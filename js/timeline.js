@@ -1,56 +1,79 @@
-// Timeline Expand/Collapse functionality
+// Timeline Expand/Collapse functionality - Show first 3, hide rest with "Show more" button
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Timeline script loaded');
+    const timeline = document.querySelector('.timeline');
     const timelineItems = document.querySelectorAll('.timeline-item');
     console.log('Found timeline items:', timelineItems.length);
 
+    if (!timeline || timelineItems.length <= 3) {
+        console.log('Not enough items for show more button');
+        return;
+    }
+
+    // Hide items after the first 3
     timelineItems.forEach((item, index) => {
-        const header = item.querySelector('.timeline-header');
-        const description = item.querySelector('.timeline-description');
-
-        console.log(`Item ${index}:`, { header: !!header, description: !!description });
-
-        if (!header || !description) {
-            console.warn(`Missing header or description for item ${index}`);
-            return;
+        if (index >= 3) {
+            item.style.display = 'none';
+            item.classList.add('hidden-experience');
         }
+    });
 
-        // Add expandable class to timeline item
-        item.classList.add('expandable');
+    // Create "Show more" button
+    const showMoreBtn = document.createElement('button');
+    showMoreBtn.className = 'show-more-btn';
+    showMoreBtn.innerHTML = `
+        <span class="show-more-text">Show ${timelineItems.length - 3} more experiences</span>
+        <svg class="show-more-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+    `;
 
-        // Collapse all items except the first 2 (most recent experiences)
-        if (index >= 2) {
-            description.classList.add('collapsed');
-            console.log(`Item ${index} collapsed`);
-        } else {
-            item.classList.add('expanded');
-            console.log(`Item ${index} expanded`);
-        }
+    // Insert button after timeline
+    timeline.parentNode.insertBefore(showMoreBtn, timeline.nextSibling);
 
-        // Make header cursor pointer
-        header.style.cursor = 'pointer';
+    // Button click handler
+    let isExpanded = false;
+    showMoreBtn.addEventListener('click', function() {
+        isExpanded = !isExpanded;
 
-        // Add click handler to header to toggle expand/collapse
-        header.addEventListener('click', function(e) {
-            console.log('Header clicked', index);
-            // Don't toggle if clicking on a link
-            if (e.target.tagName === 'A') {
-                console.log('Click on link, ignoring');
-                return;
-            }
-
-            const isCollapsed = description.classList.contains('collapsed');
-            console.log('Is collapsed:', isCollapsed);
-
-            if (isCollapsed) {
-                description.classList.remove('collapsed');
-                item.classList.add('expanded');
-                console.log('Expanded item', index);
-            } else {
-                description.classList.add('collapsed');
-                item.classList.remove('expanded');
-                console.log('Collapsed item', index);
+        timelineItems.forEach((item, index) => {
+            if (index >= 3) {
+                if (isExpanded) {
+                    item.style.display = 'block';
+                    // Animate in
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateY(0)';
+                    }, 10);
+                } else {
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateY(-20px)';
+                    setTimeout(() => {
+                        item.style.display = 'none';
+                    }, 300);
+                }
             }
         });
+
+        // Update button text and icon
+        const showMoreText = showMoreBtn.querySelector('.show-more-text');
+        const showMoreIcon = showMoreBtn.querySelector('.show-more-icon');
+
+        if (isExpanded) {
+            showMoreText.textContent = 'Show less';
+            showMoreIcon.style.transform = 'rotate(180deg)';
+        } else {
+            showMoreText.textContent = `Show ${timelineItems.length - 3} more experiences`;
+            showMoreIcon.style.transform = 'rotate(0deg)';
+        }
+    });
+
+    // Set initial transition properties
+    timelineItems.forEach((item, index) => {
+        if (index >= 3) {
+            item.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(-20px)';
+        }
     });
 });
