@@ -338,8 +338,9 @@ body {
     display: flex;
     gap: 12px;
     margin-top: 16px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: center;
+    overflow-x: auto;
 }
 
 .suggestion-pill {
