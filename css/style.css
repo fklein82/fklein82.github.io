@@ -364,8 +364,8 @@ body {
 }
 
 .section-title {
-    font-size: 64px;
-    line-height: 1.0625;
+    font-size: 40px;
+    line-height: 1.1;
     font-weight: 700;
     letter-spacing: -0.009em;
     margin-bottom: 60px;
@@ -1111,7 +1111,7 @@ body {
     }
 
     .section-title {
-        font-size: 40px;
+        font-size: 32px;
         line-height: 1.1;
         letter-spacing: 0em;
         margin-bottom: 40px;
@@ -1213,7 +1213,7 @@ body {
     }
 
     .section-title {
-        font-size: 2rem;
+        font-size: 1.75rem;
     }
 
     .section {
