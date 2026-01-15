@@ -88,10 +88,12 @@
                     }
 
                     if (line.startsWith('data:')) {
-                        // Remove typing indicator on first chunk
+                        // Remove typing indicator on first chunk and scroll to see the start of response
                         if (!firstChunkReceived) {
                             typingIndicator.remove();
                             firstChunkReceived = true;
+                            // Scroll to show the beginning of the bot message
+                            botMessageDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
                         }
 
                         // Extract content after "data:" (5 chars)
@@ -104,11 +106,14 @@
                             fullText += content;
                             botMessageP.textContent = fullText;
 
-                            // Smooth scroll to bottom with each chunk
-                            chatMessages.scrollTo({
-                                top: chatMessages.scrollHeight,
-                                behavior: 'smooth'
-                            });
+                            // Auto-scroll only if user is already near the bottom
+                            const isNearBottom = chatMessages.scrollHeight - chatMessages.scrollTop - chatMessages.clientHeight < 100;
+                            if (isNearBottom) {
+                                chatMessages.scrollTo({
+                                    top: chatMessages.scrollHeight,
+                                    behavior: 'smooth'
+                                });
+                            }
                         }
                     }
                 }

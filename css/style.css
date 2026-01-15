@@ -240,9 +240,9 @@ body {
 
 .chatbot-messages-main {
     padding: 24px;
-    max-height: 250px;
+    max-height: 450px;
     overflow-y: auto;
-    min-height: 120px;
+    min-height: 200px;
 }
 
 .chatbot-messages-main .chat-message {
