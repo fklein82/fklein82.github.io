@@ -510,11 +510,36 @@ body {
     transform: translateX(5px);
 }
 
+.timeline-item.expandable .timeline-header {
+    position: relative;
+    padding-right: 2.5rem;
+}
+
+.timeline-item.expandable .timeline-header::after {
+    content: '▼';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    color: var(--blue-accent);
+    transition: transform 0.3s;
+}
+
+.timeline-item.expandable.expanded .timeline-header::after {
+    transform: translateY(-50%) rotate(180deg);
+}
+
 .timeline-header {
     display: flex;
     align-items: flex-start;
     gap: 1.5rem;
     margin-bottom: 1rem;
+    transition: all 0.2s;
+}
+
+.timeline-item.expandable .timeline-header:hover {
+    opacity: 0.8;
 }
 
 .company-logo {
@@ -583,6 +608,16 @@ body {
 .timeline-description {
     color: var(--text-secondary);
     line-height: 1.6;
+    max-height: 500px;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    opacity: 1;
+}
+
+.timeline-description.collapsed {
+    max-height: 0;
+    opacity: 0;
+    margin-top: 0;
 }
 
 /* Certifications Grid */
