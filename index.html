@@ -245,25 +245,44 @@
 
                 <!-- Earlier Roles -->
                 <div class="timeline-item">
-                    <div class="timeline-header">
+                    <div class="timeline-header" style="cursor: pointer;" onclick="toggleEarlierRoles()">
                         <div class="company-logo">
-                            <svg class="company-icon" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                            </svg>
+                            <img src="https://cdn.jsdelivr.net/npm/@lobehub/icons-static-png@latest/dark/aws.png" alt="AWS" class="company-img">
                         </div>
                         <div class="timeline-text">
-                            <h3 class="timeline-title">Earlier Roles (Orange, AWS)</h3>
+                            <h3 class="timeline-title">Earlier Roles (Orange, AWS) <span id="earlier-roles-toggle" style="font-size: 14px; color: var(--text-muted);">▼</span></h3>
                             <p class="timeline-company">Various • 2005 - 2018</p>
                             <p class="timeline-date">2005 - 2018</p>
                         </div>
                     </div>
-                    <ul class="timeline-list">
-                        <li>AWS Solutions Architect: designed scalable, resilient cloud architectures</li>
-                        <li>DevOps & Cloud Architect: large-scale international deployments (MEA, Europe)</li>
-                        <li>Orange Money: mobile payment platform deployed in 15 countries</li>
-                        <li>Leadership of distributed teams (France, India, Tunisia, Africa)</li>
-                    </ul>
+                    <div id="earlier-roles-content">
+                        <ul class="timeline-list">
+                            <li>AWS Solutions Architect: designed scalable, resilient cloud architectures</li>
+                            <li>DevOps & Cloud Architect: large-scale international deployments (MEA, Europe)</li>
+                            <li>Orange Money: mobile payment platform deployed in 15 countries</li>
+                            <li>Leadership of distributed teams (France, India, Tunisia, Africa)</li>
+                        </ul>
+                        <p style="margin-top: 16px; text-align: center;">
+                            <a href="https://www.linkedin.com/in/fredericklein/" target="_blank" rel="noopener noreferrer" style="color: var(--accent-blue); text-decoration: none; font-size: 15px; font-weight: 500;">
+                                View full experience on LinkedIn →
+                            </a>
+                        </p>
+                    </div>
                 </div>
+
+                <script>
+                function toggleEarlierRoles() {
+                    const content = document.getElementById('earlier-roles-content');
+                    const toggle = document.getElementById('earlier-roles-toggle');
+                    if (content.style.display === 'none') {
+                        content.style.display = 'block';
+                        toggle.textContent = '▼';
+                    } else {
+                        content.style.display = 'none';
+                        toggle.textContent = '▶';
+                    }
+                }
+                </script>
             </div>
         </div>
     </section>
