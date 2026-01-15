@@ -107,9 +107,11 @@
             }
 
         } catch (error) {
-            console.error('Erreur:', error);
+            console.error('Erreur complète:', error);
+            console.error('Message d\'erreur:', error.message);
+            console.error('Stack trace:', error.stack);
             typingIndicator.remove();
-            addMessage('Désolé, une erreur s\'est produite. Assurez-vous que les API keys sont configurées dans le fichier .env', 'bot');
+            addMessage('Erreur: ' + error.message + '. Vérifiez la console pour plus de détails.', 'bot');
         } finally {
             // Re-enable input
             chatInput.disabled = false;
