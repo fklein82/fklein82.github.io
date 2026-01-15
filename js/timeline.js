@@ -10,70 +10,75 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
     }
 
-    // Hide items after the first 3
+    // Create a wrapper for hidden items
+    const hiddenItemsWrapper = document.createElement('div');
+    hiddenItemsWrapper.className = 'timeline-hidden-items';
+    hiddenItemsWrapper.style.display = 'none';
+
+    // Move items after the first 3 into the wrapper
+    const itemsToMove = [];
     timelineItems.forEach((item, index) => {
         if (index >= 3) {
-            item.style.display = 'none';
-            item.classList.add('hidden-experience');
+            itemsToMove.push(item);
         }
     });
 
-    // Create "Show more" button
-    const showMoreBtn = document.createElement('button');
-    showMoreBtn.className = 'show-more-btn';
-    showMoreBtn.innerHTML = `
-        <span class="show-more-text">Show ${timelineItems.length - 3} more experiences</span>
-        <svg class="show-more-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
-        </svg>
+    // Insert wrapper after 3rd item
+    if (timelineItems[2]) {
+        timelineItems[2].parentNode.insertBefore(hiddenItemsWrapper, timelineItems[2].nextSibling);
+
+        // Move items into wrapper
+        itemsToMove.forEach(item => {
+            hiddenItemsWrapper.appendChild(item);
+        });
+    }
+
+    // Create "Show more" button as a timeline item
+    const showMoreItem = document.createElement('div');
+    showMoreItem.className = 'timeline-item timeline-show-more';
+    showMoreItem.innerHTML = `
+        <div class="timeline-marker"></div>
+        <div class="timeline-content show-more-content">
+            <button class="show-more-btn">
+                <span class="show-more-text">View ${itemsToMove.length} earlier experiences</span>
+                <svg class="show-more-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+                </svg>
+            </button>
+        </div>
     `;
 
-    // Insert button after timeline
-    timeline.parentNode.insertBefore(showMoreBtn, timeline.nextSibling);
+    // Insert button after wrapper
+    hiddenItemsWrapper.parentNode.insertBefore(showMoreItem, hiddenItemsWrapper.nextSibling);
 
     // Button click handler
+    const showMoreBtn = showMoreItem.querySelector('.show-more-btn');
     let isExpanded = false;
+
     showMoreBtn.addEventListener('click', function() {
         isExpanded = !isExpanded;
 
-        timelineItems.forEach((item, index) => {
-            if (index >= 3) {
-                if (isExpanded) {
-                    item.style.display = 'block';
-                    // Animate in
-                    setTimeout(() => {
-                        item.style.opacity = '1';
-                        item.style.transform = 'translateY(0)';
-                    }, 10);
-                } else {
-                    item.style.opacity = '0';
-                    item.style.transform = 'translateY(-20px)';
-                    setTimeout(() => {
-                        item.style.display = 'none';
-                    }, 300);
-                }
-            }
-        });
-
-        // Update button text and icon
         const showMoreText = showMoreBtn.querySelector('.show-more-text');
         const showMoreIcon = showMoreBtn.querySelector('.show-more-icon');
 
         if (isExpanded) {
-            showMoreText.textContent = 'Show less';
+            hiddenItemsWrapper.style.display = 'block';
+            showMoreText.textContent = 'Hide earlier experiences';
             showMoreIcon.style.transform = 'rotate(180deg)';
-        } else {
-            showMoreText.textContent = `Show ${timelineItems.length - 3} more experiences`;
-            showMoreIcon.style.transform = 'rotate(0deg)';
-        }
-    });
 
-    // Set initial transition properties
-    timelineItems.forEach((item, index) => {
-        if (index >= 3) {
-            item.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-            item.style.opacity = '0';
-            item.style.transform = 'translateY(-20px)';
+            // Scroll to show more button
+            setTimeout(() => {
+                showMoreItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 100);
+        } else {
+            hiddenItemsWrapper.style.display = 'none';
+            showMoreText.textContent = `View ${itemsToMove.length} earlier experiences`;
+            showMoreIcon.style.transform = 'rotate(0deg)';
+
+            // Scroll back to show more button
+            setTimeout(() => {
+                showMoreItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 100);
         }
     });
 });

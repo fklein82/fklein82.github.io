@@ -511,13 +511,31 @@ body {
 }
 
 
-/* Show More Button */
+/* Timeline Show More Item */
+.timeline-show-more {
+    position: relative;
+    padding-left: 3rem;
+    margin-bottom: 3rem;
+}
+
+.show-more-content {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    border: none !important;
+    padding: 0 !important;
+}
+
+.show-more-content:hover {
+    transform: none !important;
+    box-shadow: none !important;
+}
+
 .show-more-btn {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    margin: 2rem auto;
+    width: 100%;
     padding: 1rem 2rem;
     background: var(--glass-bg);
     backdrop-filter: blur(12px);
@@ -542,6 +560,11 @@ body {
 
 .show-more-text {
     font-family: inherit;
+}
+
+/* Hidden timeline items wrapper */
+.timeline-hidden-items {
+    transition: all 0.3s ease;
 }
 
 .timeline-header {
