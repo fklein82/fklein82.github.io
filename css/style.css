@@ -538,11 +538,40 @@ body {
 }
 
 .timeline-description {
-    font-size: 17px;
-    line-height: 1.47059;
+    font-size: 15px;
+    line-height: 1.5;
     font-weight: 400;
     letter-spacing: -0.022em;
     color: var(--text-secondary);
+    margin-bottom: 12px;
+}
+
+.timeline-list {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin: 12px 0;
+    padding-left: 20px;
+}
+
+.timeline-list li {
+    margin-bottom: 6px;
+}
+
+.timeline-impact {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--text-muted);
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border-color);
+}
+
+.key-domains {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin-top: 16px;
 }
 
 /* Certifications Grid */
