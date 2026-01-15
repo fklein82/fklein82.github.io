@@ -713,7 +713,59 @@ body {
     font-size: 1.05rem;
 }
 
+/* Certification Section Titles */
+.cert-section-title {
+    font-size: 1.8rem;
+    color: var(--blue-accent);
+    margin: 3rem 0 2rem;
+    text-align: center;
+    font-weight: 600;
+    position: relative;
+}
+
+.cert-section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--blue-accent), transparent);
+}
+
 /* Certification Badge Grid */
+.cert-badges-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto 2rem;
+}
+
+/* CNCF Certifications - Highlighted */
+.cncf-certs {
+    padding: 2rem;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(139, 92, 246, 0.05));
+    border-radius: 20px;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.cncf-certs .cert-badge-item {
+    background: var(--glass-bg);
+    border: 2px solid var(--glass-border);
+}
+
+.cncf-certs .cert-badge-item:hover {
+    border-color: var(--blue-accent);
+    box-shadow: 0 0 25px rgba(59, 130, 246, 0.4);
+}
+
+/* Other Certifications */
+.other-certs {
+    padding: 1.5rem;
+}
+
 .cert-badge-item {
     display: flex;
     flex-direction: column;
@@ -723,19 +775,19 @@ body {
     background: var(--glass-bg);
     backdrop-filter: blur(12px);
     border: 1px solid var(--glass-border);
-    border-radius: 12px;
+    border-radius: 16px;
     transition: all 0.3s;
 }
 
 .cert-badge-item:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px);
     border-color: var(--blue-accent);
     box-shadow: var(--shadow-glow);
 }
 
 .cert-badge-img {
-    width: 120px;
-    height: 120px;
+    width: 140px;
+    height: 140px;
     object-fit: contain;
     margin-bottom: 1rem;
 }
@@ -748,10 +800,20 @@ body {
 }
 
 .cert-badge-name {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    text-align: center;
+    margin: 0 0 0.5rem 0;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.cert-badge-acronym {
+    font-size: 0.85rem;
     color: var(--text-secondary);
     text-align: center;
     margin: 0;
+    font-weight: 400;
 }
 
 /* Skills */
@@ -1001,6 +1063,33 @@ body {
 
     .cert-grid {
         grid-template-columns: 1fr;
+    }
+
+    .cert-badges-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .cert-badge-img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .cert-badge-name {
+        font-size: 0.85rem;
+    }
+
+    .cert-badge-acronym {
+        font-size: 0.75rem;
+    }
+
+    .cert-section-title {
+        font-size: 1.5rem;
+        margin: 2rem 0 1.5rem;
+    }
+
+    .cncf-certs, .other-certs {
+        padding: 1rem;
     }
 
     .section-title {
