@@ -243,13 +243,13 @@ body {
 }
 
 .chatbot-card {
-    max-width: 800px;
+    max-width: 650px;
     margin: 0 auto;
     background: var(--glass-bg);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid var(--glass-border);
-    border-radius: 24px;
+    border-radius: 20px;
     overflow: hidden;
     box-shadow: var(--shadow-soft);
     transition: all 0.3s;
@@ -317,10 +317,10 @@ body {
 }
 
 .chatbot-messages-main {
-    padding: 2rem;
-    max-height: 400px;
+    padding: 1.5rem;
+    max-height: 250px;
     overflow-y: auto;
-    min-height: 150px;
+    min-height: 120px;
 }
 
 .chatbot-messages-main .chat-message {
@@ -407,6 +407,20 @@ body {
 .btn-send-main svg {
     width: 24px;
     height: 24px;
+}
+
+/* About Section */
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
 }
 
 /* Sections */
@@ -697,6 +711,47 @@ body {
 
 .cert-card-featured .cert-description {
     font-size: 1.05rem;
+}
+
+/* Certification Badge Grid */
+.cert-badge-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    transition: all 0.3s;
+}
+
+.cert-badge-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--blue-accent);
+    box-shadow: var(--shadow-glow);
+}
+
+.cert-badge-img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    margin-bottom: 1rem;
+}
+
+.cert-badge-text {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--blue-accent);
+    margin-bottom: 1rem;
+}
+
+.cert-badge-name {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    text-align: center;
+    margin: 0;
 }
 
 /* Skills */
