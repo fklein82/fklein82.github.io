@@ -88,12 +88,16 @@
                     }
 
                     if (line.startsWith('data:')) {
-                        // Remove typing indicator on first chunk and scroll to see the start of response
+                        // Remove typing indicator on first chunk
                         if (!firstChunkReceived) {
                             typingIndicator.remove();
                             firstChunkReceived = true;
-                            // Scroll to show the beginning of the bot message
-                            botMessageDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            // Scroll the chatMessages container (not the whole page) to show bot message
+                            const messageTop = botMessageDiv.offsetTop - chatMessages.offsetTop;
+                            chatMessages.scrollTo({
+                                top: messageTop,
+                                behavior: 'smooth'
+                            });
                         }
 
                         // Extract content after "data:" (5 chars)
