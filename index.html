@@ -15,6 +15,9 @@
                 <a href="#home" class="nav-brand">
                     <img src="https://cdn.simpleicons.org/redhat/EE0000" alt="Red Hat" style="height: 24px; vertical-align: middle;">
                 </a>
+                <button class="nav-toggle" aria-label="Menu" onclick="this.classList.toggle('open');document.querySelector('.nav-links').classList.toggle('open');">
+                    <span></span><span></span><span></span>
+                </button>
                 <div class="nav-links">
                     <a href="#about">About</a>
                     <a href="#experience">Experience</a>
@@ -469,5 +472,6 @@
 
     <script src="js/timeline.js"></script>
     <script src="js/chatbot.js"></script>
+    <script>document.querySelectorAll('.nav-links a').forEach(function(a){a.addEventListener('click',function(){document.querySelector('.nav-toggle').classList.remove('open');document.querySelector('.nav-links').classList.remove('open');});});</script>
 </body>
 </html>
