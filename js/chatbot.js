@@ -1,7 +1,7 @@
 // Central Chatbot functionality
 (function() {
     // API Configuration - Update this URL after deploying to Render
-    const API_URL = 'https://portfolio-api-ikf5.onrender.com';
+    const API_URL = 'https://portfolio-api-gltm.onrender.com';
     // For local development: const API_URL = 'http://localhost:3000';
 
     const chatInput = document.getElementById('chat-input-main');
